@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: techefx-product-enquiry-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: techefx-product-enquiry-service
+  template:
+    metadata:
+      labels:
+        app: techefx-product-enquiry-service
+        tier: backend
+        track: stable
+    spec:
+      containers:
+        - name: product-enquiry
+          image: "techefx-product-enquiry-service:latest"
+          imagePullPolicy: Never
+          ports:
+            - name: enquiry-port
+              containerPort: 8700
